@@ -66,15 +66,17 @@ const FancyForm = () => {
 
     const updateAmountToReceive = (amount) => {
         if (currencyToSend && currencyToReceive && amount && !isNaN(amount) && Number(amount) >= 0) {
-            const sendCoin = coins.find(coin => coin.currency === currencyToSend.value);
-            const receiveCoin = coins.find(coin => coin.currency === currencyToReceive.value);
+            getCoins().then(latestCoins => {
+                const sendCoin = latestCoins.find(coin => coin.currency === currencyToSend.value);
+                const receiveCoin = latestCoins.find(coin => coin.currency === currencyToReceive.value);
 
-            if (sendCoin && receiveCoin) {
-                const calculatedAmount = (amount * sendCoin.price) / receiveCoin.price;
-                setAmountToReceive(calculatedAmount.toFixed(10));
-            } else {
-                setAmountToReceive('');
-            }
+                if (sendCoin && receiveCoin) {
+                    const calculatedAmount = (amount * sendCoin.price) / receiveCoin.price;
+                    setAmountToReceive(calculatedAmount.toFixed(10));
+                } else {
+                    setAmountToReceive('');
+                }
+            });
         } else {
             setAmountToReceive('');
         }
