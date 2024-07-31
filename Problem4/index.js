@@ -1,5 +1,5 @@
 
-//Conplexity: O(1) or O(n)
+//Conplexity: O(n)
 var sum_to_n_a = function(n) {
     let result = 0;
     for( let i = 1; i <= n ; i++) {
