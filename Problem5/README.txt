@@ -32,11 +32,7 @@ PORT=3000`
 Start docker: `docker-compose up -d`
 Stop docker: `docker-compose stop`
 
-# 5. Run Migrations
-Initialize your database schema:
-`yarn sequelize db:migrate``
-
-# 6. Start the Application
+# 5. Start the Application
 `yarn start`
 
 ### API Endpoints
