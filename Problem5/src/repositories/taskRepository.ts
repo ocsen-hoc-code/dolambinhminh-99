@@ -21,7 +21,7 @@ class TaskRepository extends BaseRepository<Task> {
     if (status) {
       whereClause.status = status;
     }
-
+    let test =  whereClause.toString();
     return Task.findAll({ where: whereClause });
   }
 }
