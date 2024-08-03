@@ -4,6 +4,8 @@ import taskRoutes from './routes/taskRoutes';
 import sequelize from './config/database';
 import dotenv from 'dotenv';
 import { log } from './utils/logger';
+import swaggerUi from 'swagger-ui-express';
+import { specs } from './config/swaggerConfig';
 
 dotenv.config();
 
@@ -11,6 +13,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/tasks', taskRoutes);
 
 sequelize.sync().then(() => {
